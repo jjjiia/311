@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	  <meta charset="UTF-8">
+    <title>New York City 311</title>
+
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/dc.css"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css"/>
+
+    <style>
+        #monthly-volume-chart g.y {
+            display: none;
+        }
+    </style>
+	<script language="javascript" type="text/javascript">
+	function showHide(shID) {
+	   if (document.getElementById(shID)) {
+	      if (document.getElementById(shID+'-show').style.display != 'none') {
+	         document.getElementById(shID+'-show').style.display = 'none';
+	         document.getElementById(shID).style.display = 'block';
+	      }
+	      else {
+	         document.getElementById(shID+'-show').style.display = 'inline';
+	         document.getElementById(shID).style.display = 'none';
+	      }
+	   }
+	}
+	</script>
+</head>
+
+<body>
+	<div id = "loader">
+		<div id = "loader-text">
+		
+		311 is the city's way of providing non-emergency services to its residents. Requests can vary from the infrastructural (road repair, traffic lights, electrical outages) to isolated incidents (heating, lead testing, graffiti removal and noise complaints), as long as they directly affect the everyday lives of citizens.<br/><br/>
+		This map visualizes the day of week, time of day, temperature condition, government agency, and location of 834,801 service requests made to NYC 311 in the year 2013.
+		<br/><br/>
+		
+		Please wait while records load for New York City ... 
+	</div>
+		</div>
+
+	<div id = "header">
+		<div class= "logo"><a id="logo" href="http://youarehere.cc"><img src="images/logo.png" style="width: 80px"></a></div>
+		<div class = "title">New York City</div><br/>
+		<div class = "subtitle"> This map visualizes the day of week, time of day, temperature condition, government agency, and location of 834,801 service requests made to NYC 311 in the year 2013.</div>
+    <div>
+    </div>
+	<br/>
+	<a href="#" id="example-show" class="showLink" onclick="showHide('example');return false;">... more</a></p>
+     <div id="example" class="more">
+		<p>
+		311 is the city's way of providing non-emergency services to its residents. It is also a way through which we can understand the lives of residents through their needs. How the service is used reflects the rhythm of the city itself.
+	</p>
+	
+	 	<p>
+        While agencies such as the <a href="javascript:agencyChart.filter(nypd); dc.redrawAll();">NYPD</a> responds to incidents across all zipcodes, 
+		the <a href="javascript:dc.filterAll();agencyChart.filter(tlc); dc.redrawAll();">Taxi and Limosine Commision</a>  is more concentrated in lower Manhattan and the area of Brooklyn adjacent to it.
+		<br/>
+		Blocked access and street lights dominate the complaints during the week. However complaints about <a href="javascript:dc.filterAll(); complaintChart.filter(noise); dc.redrawAll();">music and party noise take over the weekends.</a>
+		</p>
+
+	 	<p>
+	 		Link to data
+		</p>
+
+        <p><a href="#" id="example-hide" class="hideLink" onclick="showHide('example');return false;">... less</a></p>
+     </div>
+
+</div>
+
+
+
+
+<div id="container">
+	<div class="row">
+        <div class="dc-data-count">
+            <span class="filter-count"></span> selected out of <span class="total-count"></span> records | <a
+                href="javascript:dc.filterAll(); dc.renderAll();">Reset All</a>
+        </div>
+        </div>
+		
+<div class="row">
+	<div class = "chartGroupTitle">Day, Time, and Temperature</div>
+    <div id="day-of-week-chart">
+        Day of Week
+        <a class="reset" href="javascript:dayOfWeekChart.filterAll();dc.redrawAll();" 			style="display: none;">reset</a>
+        <div class="clearfix"></div>
+    </div>
+	
+    <div id="hour-chart">
+        Time of Day
+        <span class="reset" style="display: none;"><span class="filter"></span> hour</span>
+        <a class="reset" href="javascript:hourChart.filterAll();dc.redrawAll();" 		style="display: none;">reset</a>
+        <div class="clearfix"></div>
+    </div>
+	
+    <div id="temperature-chart">
+        Daily High Temperature
+        <span class="reset" style="display: none;">: <span class="filter"> </span></span>
+        <a class="reset" href="javascript:tempChart.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<div class = "row">
+
+</div>	
+	
+<div class="row">	
+	<div class = "chartGroupTitle">Zipcodes and Jurisdictions</div>
+	    <div id="nyc-chart">
+	        New York City Zipcode Map
+	        <span class="reset" style="display: none;">: <span class="filter"></span></span>
+	        <a class="reset" href="javascript:nycMap.filterAll();dc.redrawAll();" style="display: none;">reset</a>
+	        <div class="clearfix"></div>
+	    </div>
+		
+	    <div id="borough-chart">
+	       Boroughs
+	        <span class="reset" style="display: none;">: <span class="filter"></span></span>
+	        <a class="reset" href="javascript:boroughChart.filterAll();dc.redrawAll();" 		style="display: none;">reset</a>
+	        <div class="clearfix"></div>
+		</div>
+	    <div id="zipcode-chart">
+	      Top 10 Zipcodes
+	        <span class="reset" style="display: none;">: <span class="filter"></span></span>
+	        <a class="reset" href="javascript:zipcodeChart.filterAll();dc.redrawAll();" 		style="display: none;">reset</a>
+	        <div class="clearfix"></div>
+		</div>
+</div>
+
+<div class="row">
+	<div class = "chartGroupTitle">Agencies and Complaints</div>
+
+    <div id="agency-chart">
+        Top 10 Agencies
+        <span class="reset" style="display: none;">: <span class="filter"></span></span>
+        <a class="reset" href="javascript:agencyChart.filterAll();dc.redrawAll();" 		style="display: none;">reset</a>
+        <div class="clearfix"></div>
+	</div>	  
+    <div id="complaint-chart">
+        Top 10 Complaints
+        <span class="reset" style="display: none;">: <span class="filter"></span></span>
+        <a class="reset" href="javascript:complaintChart.filterAll();dc.redrawAll();"		style="display: none;">reset</a>
+        <div class="clearfix"></div>
+	</div> 
+</div>
+
+
+<!--<div class="row">
+    
+    <table class="table table-hover dc-data-table">
+        <thead>
+        <tr class="header">
+            <th>Date</th>
+            <th>Agency</th>
+            <th>Zipcode</th>
+            <th>Borough</th>
+            <th>Complaint</th>
+        </tr>
+        </thead>
+    </table>
+</div>-->
+</div>
+
+<script type="text/javascript" src="js/d3.js"></script>
+<script type="text/javascript" src="js/crossfilter.js"></script>
+<script type="text/javascript" src="js/dc.js"></script>
+<script type="text/javascript" src="js/colorbrewer.js"></script>
+<script type="text/javascript" src="js/queue.v1.min.js"></script>
+
+<script type="text/javascript" src="index.js"></script>
+
+
+</body>
+</html>
